@@ -1,5 +1,4 @@
 import requests
-from urllib.error import HTTPError
 
 
 class Pistachio:
@@ -78,7 +77,7 @@ class Pistachio:
             return r.json()
 
         else:
-            raise HTTPError(f"Got response code: {r.status_code}")
+            raise ValueError(f"Got response code: {r.status_code}")
 
     def summary(
         self, query: str, reaction_grouping: bool = True, draw: int = 0
@@ -93,7 +92,7 @@ class Pistachio:
         if r.status_code == 200:
             self.session_id = int(r.text)
         else:
-            raise HTTPError(f"Got responsse code: {r.status_code}")
+            raise ValueError(f"Got responsse code: {r.status_code}")
 
     def end_session(self):
         if self.session_id is None:
@@ -105,4 +104,4 @@ class Pistachio:
         if r.status_code == 200:
             return r.json()
         else:
-            raise HTTPError(f"Got response code: {r.status_code}")
+            raise ValueError(f"Got response code: {r.status_code}")
