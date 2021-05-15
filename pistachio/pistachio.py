@@ -3,7 +3,7 @@ from urllib.error import HTTPError
 
 
 class Pistachio:
-    def __init__(self, base_url: "localhost:http://localhost:8898/"):
+    def __init__(self, base_url: str = "http://localhost:8898/"):
         self.base_url = base_url
         self.session_id = None
 
@@ -70,21 +70,23 @@ class Pistachio:
 
     def get_details(self, reaction_id: str) -> dict:
         """Get the details of a reaction"""
-        r = requests.get(base_url + "get/" + reaction_id)
+        r = requests.get(self.base_url + "get/" + reaction_id)
         if r.status_code == 200:
             return r.json()
 
         else:
             raise HTTPError(f"Got response code: {r.status_code}")
 
-    def summary(self, query: str, reaction_grouping: bool = True, draw: int = 0):
+    def summary(
+        self, query: str, reaction_grouping: bool = True, draw: int = 0
+    ) -> dict:
         if self.session_id is None:
             raise ValueError("Session id is null. Call renew_session")
         payload = dict(q=query, s=self.session_id, g=reaction_grouping, d=draw)
         return self._get("summary", params=payload)
 
     def renew_session(self):
-        r = requests.get(base_url + "newsessionid")
+        r = requests.get(self.base_url + "newsessionid")
         if r.status_code == 200:
             self.session_id = int(r.text)
         else:
@@ -96,7 +98,7 @@ class Pistachio:
         self._get("endsession", params={"s": self.session_id})
 
     def _get(self, endpoint: str, params: dict = None) -> dict:
-        r = requests.get(base_url + endpoint, params=params)
+        r = requests.get(self.base_url + endpoint, params=params)
         if r.status_code == 200:
             return r.json()
         else:
