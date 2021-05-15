@@ -15,3 +15,9 @@ def test_pistachio():
         assert all(r) == all(expected_r)
 
         # Test suggestions
+        r = p.suggest("Suzuk")
+
+        # Search
+        r = p.search("suzuki_coupling")
+
+        # g

@@ -4,7 +4,10 @@ This is the repository for our unofficial python SDK for the Pistachio API.
 
 ## Installation
 
+```bash
 pip install git+https://github.com/sustainable-processes/pistachio-python
+```
+
 
 ## Usage
 
@@ -60,3 +63,15 @@ Search for reactions.
 ```python
 p.search("suzuki coupling")
 ```
+
+Get details about a reaction by its id.
+```python
+p.get_details("176")
+```
+
+Summarize the data for each type of result of a query.
+```python
+p.summary("suzuki_coupling")
+```
+
+
