@@ -9,6 +9,7 @@ class Pistachio:
 
     def __enter__(self):
         self.renew_session()
+        return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.end_session()
@@ -53,18 +54,20 @@ class Pistachio:
         query: str,
         reaction_grouping: bool = True,
         begin_offset: int = 0,
-        end_offset: int = 0,
+        end_offset: int = 10,
         draw: int = 0,
     ) -> dict:
         if self.session_id is None:
             raise ValueError("Session id is null. Call renew_session")
+        if end_offset < 1:
+            raise ValueError("End offset must be greater than 1. ")
         payload = dict(
             q=query,
             s=self.session_id,
             g=reaction_grouping,
-            b=begin_offset,
-            e=end_offset,
-            d=draw,
+            b=int(begin_offset),
+            e=int(end_offset),
+            d=int(draw),
         )
         return self._get("search", params=payload)
 
