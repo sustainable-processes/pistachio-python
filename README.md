@@ -8,17 +8,11 @@ This is the repository for our unofficial python SDK for the Pistachio API.
 pip install git+https://github.com/sustainable-processes/pistachio-python
 ```
 
-For an example of how this code is used, see the [TL-BO project](https://github.com/sustainable-processes/TL-BO/tree/main/data/pistachio).
+If you are in the SRE group, see the full instructions at the bottom of this page.
 
 ## Usage
 
-**SSH Tunnel**
 
-If you are not running this on a the server, you need to set up an ssh tunnel to port 8080 (while logged into the VPN.) You can map to any open port on your machine. Below, I used 8898.
-
- ```bash
-$ ssh -NfL localhost:8898:localhost:8080 csrid@ceb-307-40-ldo.ceb.private.cam.ac.uk
-```
 **Sessions**
 
 You can set up a session in one of two ways:
@@ -75,4 +69,12 @@ Summarize the data for each type of result of a query.
 p.summary("suzuki_coupling")
 ```
 
+**Instructions for the SRE group**
 
+If you are not running this on a the server, you need to set up an ssh tunnel to port 8080 (while logged into the VPN.) You can map to any open port on your machine. Below, I used 8898.
+
+ ```bash
+$ ssh -NfL localhost:8898:localhost:8080 csrid@ceb-307-40-ldo.ceb.private.cam.ac.uk
+```
+
+For an example of how this code is used, see the [TL-BO project](https://github.com/sustainable-processes/TL-BO/tree/main/data/pistachio) (link only accessible to the SRE group).
