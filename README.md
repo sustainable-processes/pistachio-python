@@ -12,7 +12,6 @@ If you are in the SRE group, see the full instructions at the bottom of this pag
 
 ## Usage
 
-
 **Sessions**
 
 You can set up a session in one of two ways:
@@ -69,7 +68,7 @@ Summarize the data for each type of result of a query.
 p.summary("suzuki_coupling")
 ```
 
-**Instructions for the SRE group**
+## Instructions for the SRE group
 
 If you are not running this on a the server, you need to set up an ssh tunnel to port 8080 (while logged into the VPN.) You can map to any open port on your machine. Below, I used 8898.
 
