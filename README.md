@@ -8,6 +8,7 @@ This is the repository for our unofficial python SDK for the Pistachio API.
 pip install git+https://github.com/sustainable-processes/pistachio-python
 ```
 
+For an example of how this code is used, see the [TL-BO project](https://github.com/sustainable-processes/TL-BO/tree/main/data/pistachio).
 
 ## Usage
 
